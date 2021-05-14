@@ -54,6 +54,7 @@ This project create an Hadoop and Spark cluster on Amazon AWS with Terraform
 access_key="<YOUR AWS ACCESS KEY>"
 secret_key="<YOUR AWS SECRET KEY>"
 token="<YOUR AWS TOKEN>"
+subnet_id="<YOUR AWS SUBNET ID>"
 ```
 **Note:** without setting the other variables (you can find it on variables.tf), terraform will create a cluster on region "us-east-1", with 1 namenode, 3 datanode and with an instance type of m5.xlarge.
 

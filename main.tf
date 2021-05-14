@@ -38,6 +38,7 @@ resource "aws_security_group" "Hadoop_cluster_sc" {
 
 # namenode (master)
 resource "aws_instance" "Namenode" {
+    subnet_id = "subnet-d14b31f0"
     count = var.namenode_count
     ami = var.ami_image
     instance_type = var.instance_type
@@ -45,7 +46,7 @@ resource "aws_instance" "Namenode" {
     tags = {
         Name = "s01"
     }
-    private_ip = "172.31.0.101"
+    private_ip = "172.31.80.101"
     vpc_security_group_ids = [aws_security_group.Hadoop_cluster_sc.id]
 
     provisioner "file" {
@@ -105,6 +106,7 @@ resource "aws_instance" "Namenode" {
 
 # datanode (slaves)
 resource "aws_instance" "Datanode" {
+    subnet_id = "subnet-d14b31f0"
     count = var.datanode_count
     ami = var.ami_image
     instance_type = var.instance_type
