@@ -7,22 +7,24 @@ done
 
 # install some packages
 sudo apt-get -y update
-#sudo apt-get -y dist-upgrade
 sudo apt-get -y install git
 sudo apt-get -y install python3
 sudo apt-get -y install python3-pip
+sudo apt-get -y install openjdk-8-jdk
+
+# install python libraries
 pip3 install findspark
 pip3 install numpy
-sudo apt-get -y install openjdk-8-jdk
+pip3 install pandas
 
 # master and slaves ip (you can add more if needed)
 echo '
-172.31.0.101 s01
-172.31.0.102 s02
-172.31.0.103 s03
-172.31.0.104 s04
-172.31.0.105 s05
-172.31.0.106 s06' | sudo tee --append /etc/hosts > /dev/null
+172.31.80.101 s01
+172.31.80.102 s02
+172.31.80.103 s03
+172.31.80.104 s04
+172.31.80.105 s05
+172.31.80.106 s06' | sudo tee --append /etc/hosts > /dev/null
 
 sudo chmod 700 /home/ubuntu/.ssh
 sudo chmod 600 /home/ubuntu/.ssh/id_rsa

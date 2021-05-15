@@ -38,15 +38,15 @@ resource "aws_security_group" "Hadoop_cluster_sc" {
 
 # namenode (master)
 resource "aws_instance" "Namenode" {
-    subnet_id = "subnet-d14b31f0"
+    subnet_id = var.subnet_id
     count = var.namenode_count
     ami = var.ami_image
     instance_type = var.instance_type
     key_name = var.aws_key_name
     tags = {
-        Name = "s01"
+        Name = lookup(var.namenode_hostnames, count.index)
     }
-    private_ip = "172.31.80.101"
+    private_ip = lookup(var.namenode_ips, count.index)
     vpc_security_group_ids = [aws_security_group.Hadoop_cluster_sc.id]
 
     provisioner "file" {
@@ -106,15 +106,15 @@ resource "aws_instance" "Namenode" {
 
 # datanode (slaves)
 resource "aws_instance" "Datanode" {
-    subnet_id = "subnet-d14b31f0"
+    subnet_id = var.subnet_id
     count = var.datanode_count
     ami = var.ami_image
     instance_type = var.instance_type
     key_name = var.aws_key_name
     tags = {
-        Name = lookup(var.hostnames, count.index)
+        Name = lookup(var.datanodes_hostnames, count.index)
     }
-    private_ip = lookup(var.ips, count.index)
+    private_ip = lookup(var.datanodes_ips, count.index)
     vpc_security_group_ids = [aws_security_group.Hadoop_cluster_sc.id]
 
     # copy the initialization script to the remote machines

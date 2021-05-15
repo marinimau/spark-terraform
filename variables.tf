@@ -48,17 +48,39 @@ variable "amz_key_path" {
     default = "amzkey.pem"
 }
 
+variable "subnet_id" {
+    type = string
+    default = "subnet-d14b31f0"        # found it on the aws console using: aws ec2 describe-subnets
+}
+
+
 variable "namenode_count" {
     type = number
     default = 1                         # count = 1 = 1 aws EC2
 }
+
+
+variable "namenode_ips" {
+    default = {
+        "0" = "172.31.80.101"
+    }
+}
+
+
+variable "namenode_hostnames" {
+    default = {
+        "0" = "s01"
+    }
+}
+
 
 variable "datanode_count" {
     type = number
     default = 3                         # count = 3 = 3 aws EC2
 }
 
-variable "ips" {
+
+variable "datanodes_ips" {
     default = {
         "0" = "172.31.80.102"
         "1" = "172.31.80.103"
@@ -69,7 +91,7 @@ variable "ips" {
     }
 }
 
-variable "hostnames" {
+variable "datanodes_hostnames" {
     default = {
         "0" = "s02"
         "1" = "s03"

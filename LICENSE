@@ -1,9 +1,9 @@
 MIT License
 
-Original work by Konstantinos Tsaprailis, 2017
-https://github.com/kostistsaprailis/hadoop-spark-cluster-deployment/blob/master/LICENSE
+Original work by Emanuele Concas, 2020
+https://github.com/conema/spark-terraform/blob/master/LICENSE
 
-Copyright (c) 2020 Emanuele Concas
+Copyright (c) 2021 Mauro Marini
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
