@@ -25,7 +25,8 @@ echo '
 172.31.80.103 s03
 172.31.80.104 s04
 172.31.80.105 s05
-172.31.80.106 s06' | sudo tee --append /etc/hosts > /dev/null
+172.31.80.106 s06
+172.31.80.107 s07' | sudo tee --append /etc/hosts > /dev/null
 
 sudo chmod 700 /home/ubuntu/.ssh
 sudo chmod 600 /home/ubuntu/.ssh/id_rsa
@@ -171,7 +172,8 @@ s02
 s03
 s04
 s05
-s06' | sudo tee /opt/hadoop-2.7.7/etc/hadoop/slaves > /dev/null
+s06
+s07' | sudo tee /opt/hadoop-2.7.7/etc/hadoop/slaves > /dev/null
 
 sudo sed -i -e 's/export\ JAVA_HOME=\${JAVA_HOME}/export\ JAVA_HOME=\/usr\/lib\/jvm\/java-8-openjdk-amd64/g' /opt/hadoop-2.7.7/etc/hadoop/hadoop-env.sh
 
@@ -183,16 +185,16 @@ sudo chown -R ubuntu /opt/hadoop-2.7.7
 
 # spark installation
 cd /opt/
-sudo wget https://downloads.apache.org/spark/spark-3.1.1/spark-3.1.1-bin-hadoop2.7.tgz > /dev/null
-sudo tar -xvzf spark-3.1.1-bin-hadoop2.7.tgz > /dev/null
+sudo wget https://archive.apache.org/dist/spark/spark-3.0.1/spark-3.0.1-bin-hadoop2.7.tgz > /dev/null
+sudo tar -xvzf spark-3.0.1-bin-hadoop2.7.tgz > /dev/null
 
 echo '
-export SPARK_HOME=/opt/spark-3.1.1-bin-hadoop2.7
+export SPARK_HOME=/opt/spark-3.0.1-bin-hadoop2.7
 export PATH=$PATH:$SPARK_HOME/bin' | sudo tee --append /home/ubuntu/.bashrc > /dev/null
 
 sudo chown -R ubuntu /opt/spark-3.0.1-bin-hadoop2.7
 
-cd spark-3.1.1-bin-hadoop2.7
+cd spark-3.0.1-bin-hadoop2.7
 
 cp conf/spark-env.sh.template conf/spark-env.sh  
 
@@ -209,7 +211,8 @@ s02
 s03
 s04
 s05
-s06' | sudo tee --append conf/slaves > /dev/null
+s06
+s07' | sudo tee --append conf/slaves > /dev/null
 
 cp conf/spark-defaults.conf.template conf/spark-defaults.conf
 
