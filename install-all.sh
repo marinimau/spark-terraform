@@ -16,6 +16,7 @@ sudo apt-get -y install openjdk-8-jdk
 pip3 install findspark
 pip3 install numpy
 pip3 install pandas
+pip3 install scipy
 
 # master and slaves ip (you can add more if needed)
 echo '
