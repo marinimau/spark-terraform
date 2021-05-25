@@ -11,12 +11,14 @@ sudo apt-get -y install git
 sudo apt-get -y install python3
 sudo apt-get -y install python3-pip
 sudo apt-get -y install openjdk-8-jdk
+sudo apt-get -y install awscli
 
 # install python libraries
 pip3 install findspark
 pip3 install numpy
 pip3 install pandas
 pip3 install scipy
+pip3 install boto3
 
 # master and slaves ip (you can add more if needed)
 echo '
