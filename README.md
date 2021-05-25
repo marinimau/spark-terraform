@@ -90,9 +90,10 @@ $SPARK_HOME/sbin/start-slaves.sh spark://s01:7077
 9. Configure your aws credential
 
 ```
-export AWS_ACCESS_KEY_ID="<YOUR_AWS_ACCES_KEY>"
-export AWS_SECRET_ACCESS_KEY="<YOUR_AWS_SECRET_KEY>"
+aws configure
 ```
+
+region is 'us-east-1'
 
 
 
