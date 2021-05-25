@@ -54,7 +54,6 @@ This project create an Hadoop and Spark cluster on Amazon AWS with Terraform
 access_key="<YOUR AWS ACCESS KEY>"
 secret_key="<YOUR AWS SECRET KEY>"
 token="<YOUR AWS TOKEN>"
-subnet_id="<YOUR AWS SUBNET ID>"
 ```
 **Note:** without setting the other variables (you can find it on variables.tf), terraform will create a cluster on region "us-east-1", with 1 namenode, 3 datanode and with an instance type of m5.xlarge.
 
@@ -88,7 +87,7 @@ $SPARK_HOME/sbin/start-master.sh
 $SPARK_HOME/sbin/start-slaves.sh spark://s01:7077
 ```
 
-9. To use s3:
+9. Configure your aws credential
 
 ```
 export AWS_ACCESS_KEY_ID="<YOUR_AWS_ACCES_KEY>"
@@ -96,9 +95,11 @@ export AWS_SECRET_ACCESS_KEY="<YOUR_AWS_SECRET_KEY>"
 ```
 
 
+
+
 9. You are ready to execute your app! Execute this command on the master
 ```
-/opt/spark-3.0.1-bin-hadoop2.7/bin/spark-submit --packages com.amazonaws:aws-java-sdk:1.7.4,org.apache.hadoop:hadoop-aws:2.7.7,org.apache.hadoop:hadoop-aws:2.7.7 --master spark://s01:7077  --executor-cores 2 --executor-memory 20g spark_fraud_detection/main.py
+/opt/spark-3.0.1-bin-hadoop2.7/bin/spark-submit --packages com.amazonaws:aws-java-sdk:1.7.4,org.apache.hadoop:hadoop-aws:2.7.7,org.apache.hadoop:hadoop-aws:2.7.7 --master spark://s01:7077  --executor-cores 2 --executor-memory 14g spark_fraud_detection/main.py
 ```
 
 10. Remember to do `terraform destroy` to delete your EC2 instances
